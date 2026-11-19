@@ -1,0 +1,33 @@
+<section id="faq" class="section-py faq-section scroll-mt-header">
+  <div class="container container-narrow">
+    <app-section-header 
+      badge="Got Questions?" 
+      title="Frequently Asked Questions" 
+      subtitle="Find quick answers regarding clinic visits, pediatric consultations, vaccinations, and booking procedures."
+    />
+
+    <div class="accordion-container">
+      @for (faq of faqs(); track faq.id) {
+        <div class="faq-item" [class.is-expanded]="isOpen(faq.id)">
+          <button 
+            type="button" 
+            class="faq-header-btn" 
+            (click)="toggleFaq(faq.id)" 
+            [attr.aria-expanded]="isOpen(faq.id)"
+          >
+            <span class="faq-question">{{ faq.question }}</span>
+            <span class="faq-toggle-icon">
+              <app-icon [name]="isOpen(faq.id) ? 'chevron-down' : 'chevron-right'" [size]="18" />
+            </span>
+          </button>
+
+          @if (isOpen(faq.id)) {
+            <div class="faq-body animate-faq">
+              <p class="faq-answer">{{ faq.answer }}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>

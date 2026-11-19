@@ -1,0 +1,58 @@
+<section id="doctor" class="section-py doctor-section scroll-mt-header">
+  <div class="container">
+    <div class="doctor-profile-card">
+      <div class="doctor-card-grid">
+        <!-- Avatar / Credentials Badge -->
+        <div class="doctor-avatar-col">
+          <div class="doctor-avatar-circle">
+            <span class="avatar-initials">{{ doctor().initials }}</span>
+            <div class="doctor-badge-ribbon">
+              <app-icon name="award" [size]="16" />
+              <span>MD Pediatrics</span>
+            </div>
+          </div>
+          <div class="doctor-quick-tags">
+            <span class="d-tag">6+ Years Exp</span>
+            <span class="d-tag">5.0 ★ Rated</span>
+            <span class="d-tag">Nashik Pediatrician</span>
+          </div>
+        </div>
+
+        <!-- Doctor Details & Bio -->
+        <div class="doctor-info-col">
+          <span class="badge-pill badge-amber doctor-kicker">
+            Doctor Profile
+          </span>
+          <h2 class="doctor-name">{{ doctor().name }}, {{ doctor().qualification }}</h2>
+          <p class="doctor-title">{{ doctor().title }}</p>
+
+          <p class="doctor-bio">{{ doctor().bio }}</p>
+
+          <div class="doctor-speciality-list">
+            <h4 class="spec-heading">Clinical Focus & Expertise:</h4>
+            <div class="spec-pills-wrap">
+              @for (spec of doctor().specializations; track spec) {
+                <span class="spec-pill">
+                  <app-icon name="check" [size]="14" customClass="spec-check" />
+                  <span>{{ spec }}</span>
+                </span>
+              }
+            </div>
+          </div>
+
+          <div class="doctor-card-action">
+            <a 
+              [href]="getDoctorBookingLink()" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-whatsapp"
+            >
+              <app-icon name="message-circle" [size]="18" />
+              <span>Consult with Dr. Suraj Yewale</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

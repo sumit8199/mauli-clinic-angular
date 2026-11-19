@@ -1,0 +1,105 @@
+<section class="hero-section hero-glow-bg">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <!-- Location & Trust Pill -->
+      <div class="hero-pill-badge">
+        <span class="badge-pill badge-teal">
+          <app-icon name="sparkles" [size]="14" />
+          <span>Panchavati, Nashik</span>
+        </span>
+        <span class="badge-pill badge-amber">
+          <app-icon name="star" [size]="14" />
+          <span>5.0 Star Rated Clinic</span>
+        </span>
+      </div>
+
+      <!-- Main Catchy Title -->
+      <h1 class="hero-headline">
+        Trusted Pediatric Care & Family Healthcare in Panchavati, Nashik
+      </h1>
+
+      <!-- Subtitle description -->
+      <p class="hero-description">
+        Led by <strong>Dr. Suraj Yewale</strong> (MD Pediatrics), offering compassionate, scientifically grounded medical care for newborns, growing infants, children, and whole families.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-cta-group">
+        <a 
+          [href]="getWhatsAppBookingLink()" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-whatsapp btn-lg shadow-lift"
+        >
+          <app-icon name="message-circle" [size]="20" />
+          <span>Book Appointment on WhatsApp</span>
+        </a>
+
+        <a 
+          [href]="getDirectionsLink()" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-outline btn-lg"
+        >
+          <app-icon name="navigation" [size]="18" />
+          <span>Get Directions</span>
+        </a>
+      </div>
+
+      <!-- Quick Trust Indicators & Stat Badges -->
+      <div class="hero-stats-grid">
+        @for (stat of stats(); track stat.label) {
+          <div class="stat-card">
+            <div class="stat-icon-wrap">
+              <app-icon [name]="stat.icon" [size]="20" />
+            </div>
+            <div class="stat-meta">
+              <h4 class="stat-value">{{ stat.value }}</h4>
+              <p class="stat-label">{{ stat.label }}</p>
+              @if (stat.sublabel) {
+                <span class="stat-sublabel">{{ stat.sublabel }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Hero Visual / Image with Interactive Overlays -->
+    <div class="hero-visual-wrapper">
+      <div class="hero-image-frame">
+        <img 
+          src="assets/hero.jpg" 
+          alt="Dr. Suraj Yewale examining a smiling pediatric child patient" 
+          class="hero-img"
+          width="1280"
+          height="1024"
+          fetchpriority="high"
+        />
+        <div class="hero-image-overlay"></div>
+
+        <!-- Floating Trust Card 1 -->
+        <div class="floating-badge badge-top-left animate-float">
+          <div class="floating-icon-box bg-emerald">
+            <app-icon name="shield-check" [size]="18" />
+          </div>
+          <div class="floating-text">
+            <span class="floating-title">100% Safe Vaccines</span>
+            <span class="floating-desc">Cold-Chain Assured Storage</span>
+          </div>
+        </div>
+
+        <!-- Floating Trust Card 2 -->
+        <div class="floating-badge badge-bottom-right animate-float" style="animation-delay: -2s;">
+          <div class="floating-icon-box bg-teal">
+            <app-icon name="stethoscope" [size]="18" />
+          </div>
+          <div class="floating-text">
+            <span class="floating-title">MD (Pediatrics)</span>
+            <span class="floating-desc">Gentle & Accurate Diagnosis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

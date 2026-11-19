@@ -1,0 +1,100 @@
+<!-- Top Emergency / Timing Banner -->
+<div class="top-announcement-bar">
+  <div class="container announcement-inner">
+    <div class="status-indicator-wrap">
+      <span class="status-dot" [class.open]="clinicStatus().isOpen"></span>
+      <span class="status-badge">{{ clinicStatus().statusText }}</span>
+      <span class="status-detail">{{ clinicStatus().slotInfo }}</span>
+    </div>
+    <div class="top-contact-actions">
+      <a [href]="getPhoneLink()" class="top-link">
+        <app-icon name="phone" [size]="14" />
+        <span>{{ contact().phoneFormatted }}</span>
+      </a>
+      <span class="top-divider">|</span>
+      <span class="top-location">
+        <app-icon name="map-pin" [size]="14" />
+        <span>Panchavati, Nashik</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Sticky Header -->
+<header class="main-header" [class.is-scrolled]="isScrolled()">
+  <div class="container header-container">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link" (click)="closeMobileMenu()">
+      <span class="brand-icon-box">
+        <app-icon name="heart-pulse" [size]="22" />
+      </span>
+      <div class="brand-text">
+        <span class="brand-title">{{ clinicName() }}</span>
+        <span class="brand-subtitle">Dr. Suraj Yewale • MD (Pediatrics)</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      @for (link of navLinks(); track link.href) {
+        <a [href]="link.href" class="nav-item-link">
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+
+    <!-- Header Action CTAs -->
+    <div class="header-actions">
+      <a 
+        [href]="getWhatsAppLink()" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-primary btn-sm header-cta"
+      >
+        <app-icon name="message-circle" [size]="16" />
+        <span>Book Appointment</span>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button 
+        type="button" 
+        class="mobile-toggle-btn" 
+        (click)="toggleMobileMenu()" 
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <app-icon [name]="mobileMenuOpen() ? 'x' : 'menu'" [size]="24" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  @if (mobileMenuOpen()) {
+    <div class="mobile-drawer animate-drawer">
+      <div class="container mobile-drawer-inner">
+        <div class="mobile-doctor-pill">
+          <app-icon name="baby" [size]="18" />
+          <span>Specialized Pediatric & Family Care</span>
+        </div>
+        <nav class="mobile-nav-list">
+          @for (link of navLinks(); track link.href) {
+            <a [href]="link.href" class="mobile-nav-item" (click)="closeMobileMenu()">
+              <span>{{ link.label }}</span>
+              <app-icon name="chevron-right" [size]="16" />
+            </a>
+          }
+        </nav>
+        <div class="mobile-drawer-cta">
+          <a [href]="getWhatsAppLink()" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp w-full" (click)="closeMobileMenu()">
+            <app-icon name="message-circle" [size]="18" />
+            <span>Book on WhatsApp</span>
+          </a>
+          <a [href]="getPhoneLink()" class="btn btn-outline w-full" (click)="closeMobileMenu()">
+            <app-icon name="phone" [size]="18" />
+            <span>Call Clinic: {{ contact().phoneFormatted }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</header>

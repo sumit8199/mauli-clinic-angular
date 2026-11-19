@@ -1,0 +1,235 @@
+.hero-section {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding-top: 2.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-pill-badge {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.hero-headline {
+  font-size: 2.75rem;
+  line-height: 1.18;
+  color: var(--color-deep);
+  margin-bottom: 1.25rem;
+
+  @media (max-width: 768px) {
+    font-size: 2.125rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.875rem;
+  }
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 620px;
+
+  strong {
+    color: var(--color-deep);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.shadow-lift {
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+}
+
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.875rem 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(31, 122, 140, 0.3);
+  }
+}
+
+.stat-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.stat-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-deep);
+  font-family: var(--font-sans);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.stat-sublabel {
+  font-size: 0.6875rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  display: none; // Reserved for expanded display
+}
+
+/* Visual Wrapper & Image */
+.hero-visual-wrapper {
+  position: relative;
+}
+
+.hero-image-frame {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 3px solid #ffffff;
+  background-color: #ffffff;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-smooth);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
+  &.badge-top-left {
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+
+  &.badge-bottom-right {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+}
+
+.floating-icon-box {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  flex-shrink: 0;
+
+  &.bg-emerald {
+    background-color: var(--color-success);
+  }
+
+  &.bg-teal {
+    background-color: var(--color-primary);
+  }
+}
+
+.floating-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-deep);
+  line-height: 1.2;
+}
+
+.floating-desc {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+}

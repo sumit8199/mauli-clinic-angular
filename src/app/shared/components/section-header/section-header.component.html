@@ -1,0 +1,11 @@
+<div class="section-header-wrap" [class.text-center]="centered()">
+  @if (badge()) {
+    <span class="badge-pill badge-teal header-badge">
+      {{ badge() }}
+    </span>
+  }
+  <h2 class="header-title">{{ title() }}</h2>
+  @if (subtitle()) {
+    <p class="header-subtitle">{{ subtitle() }}</p>
+  }
+</div>

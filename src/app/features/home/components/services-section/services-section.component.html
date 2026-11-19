@@ -1,0 +1,50 @@
+<section id="services" class="section-py services-section scroll-mt-header">
+  <div class="container">
+    <app-section-header 
+      badge="Clinical Specialities" 
+      title="Comprehensive Healthcare Services" 
+      subtitle="From neonatal wellness and painless immunization to acute illness management and family health, explore our specialized clinical offerings."
+    />
+
+    <div class="services-grid">
+      @for (service of services(); track service.id) {
+        <div class="service-card group">
+          <div class="service-top-meta">
+            <span class="service-icon-wrapper">
+              <app-icon [name]="service.icon" [size]="24" />
+            </span>
+            @if (service.badge) {
+              <span class="service-badge-tag">{{ service.badge }}</span>
+            }
+          </div>
+
+          <h3 class="service-card-title">{{ service.title }}</h3>
+          <p class="service-card-description">{{ service.description }}</p>
+
+          @if (service.features && service.features.length) {
+            <ul class="service-points-list">
+              @for (feat of service.features; track feat) {
+                <li class="service-point">
+                  <app-icon name="check" [size]="14" customClass="check-icon" />
+                  <span>{{ feat }}</span>
+                </li>
+              }
+            </ul>
+          }
+
+          <div class="service-card-footer">
+            <a 
+              [href]="getServiceEnquiryLink(service)" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="service-enquiry-btn"
+            >
+              <span>Consult On WhatsApp</span>
+              <app-icon name="chevron-right" [size]="16" />
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

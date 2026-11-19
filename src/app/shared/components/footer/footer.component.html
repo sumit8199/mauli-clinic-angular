@@ -1,0 +1,95 @@
+<footer class="site-footer">
+  <div class="container footer-main-grid">
+    <!-- Clinic Brand & Intro -->
+    <div class="footer-col brand-col">
+      <div class="footer-logo">
+        <span class="footer-logo-icon">
+          <app-icon name="heart-pulse" [size]="20" />
+        </span>
+        <span class="footer-logo-text">{{ clinicName() }}</span>
+      </div>
+      <p class="footer-desc">
+        Dedicated to compassionate, scientifically grounded healthcare for newborns, children, adolescents, and whole families in Panchavati, Nashik.
+      </p>
+      <div class="doctor-badge-footer">
+        <span class="badge-pill badge-amber">
+          <app-icon name="award" [size]="14" />
+          <span>{{ doctor().name }}, {{ doctor().qualification }}</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Links -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Quick Links</h3>
+      <ul class="footer-nav-list">
+        @for (link of navLinks(); track link.href) {
+          <li>
+            <a [href]="link.href" class="footer-link">
+              <app-icon name="chevron-right" [size]="14" />
+              <span>{{ link.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Visiting Schedule -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Visiting Hours</h3>
+      <div class="timing-rows">
+        @for (time of timings(); track time.days) {
+          <div class="timing-block">
+            <p class="timing-day">
+              <app-icon name="clock" [size]="14" />
+              <span>{{ time.days }}</span>
+            </p>
+            <p class="timing-hours">{{ time.morningSlot }}</p>
+            <p class="timing-hours" [class.closed-text]="time.isSunday">{{ time.eveningSlot }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Contact & Address -->
+    <div class="footer-col contact-col">
+      <h3 class="footer-heading">Clinic Address & Contact</h3>
+      <div class="contact-info-list">
+        <div class="contact-item">
+          <app-icon name="map-pin" [size]="18" customClass="text-accent" />
+          <p>{{ contact().address.fullAddress }}</p>
+        </div>
+        <div class="contact-item">
+          <app-icon name="phone" [size]="18" customClass="text-accent" />
+          <a [href]="getPhoneLink()" class="footer-contact-link">{{ contact().phoneFormatted }}</a>
+        </div>
+        <div class="contact-item">
+          <app-icon name="mail" [size]="18" customClass="text-accent" />
+          <a [href]="'mailto:' + contact().email" class="footer-contact-link">{{ contact().email }}</a>
+        </div>
+        <div class="footer-action-btns">
+          <a [href]="getWhatsAppLink()" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">
+            <app-icon name="message-circle" [size]="16" />
+            <span>WhatsApp Clinic</span>
+          </a>
+          <a [href]="contact().googleMapsUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm footer-dir-btn">
+            <app-icon name="navigation" [size]="16" />
+            <span>Directions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Legal Strip -->
+  <div class="footer-bottom-strip">
+    <div class="container bottom-inner">
+      <p class="copyright-text">
+        © {{ currentYear }} {{ clinicName() }}. All rights reserved.
+      </p>
+      <p class="legal-note">
+        Registered Medical Establishment • Panchavati, Nashik, Maharashtra
+      </p>
+    </div>
+  </div>
+</footer>

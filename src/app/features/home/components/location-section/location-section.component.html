@@ -1,0 +1,37 @@
+<section class="section-py location-section">
+  <div class="container">
+    <app-section-header 
+      badge="Visit Clinic" 
+      title="How to Reach Dr. Yewale's Clinic" 
+      subtitle="Conveniently situated at Dream Aura, Adgaon on Jatra-Nandur Road, Panchavati, Nashik with parking and easy access."
+    />
+
+    <div class="map-wrapper-card">
+      <div class="map-frame-container">
+        <iframe 
+          title="Dr. Yewale's Mauli Clinic location map in Nashik" 
+          [src]="contact().googleMapsEmbedUrl | safeUrl" 
+          class="google-map-iframe" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <div class="map-footer-bar">
+        <div class="map-address-text">
+          <app-icon name="map-pin" [size]="20" customClass="pin-icon" />
+          <span>{{ contact().address.fullAddress }}</span>
+        </div>
+        <a 
+          [href]="getDirectionsLink()" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-primary btn-sm"
+        >
+          <app-icon name="navigation" [size]="16" />
+          <span>Open in Google Maps</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,159 @@
+<section id="contact" class="section-py appointment-section scroll-mt-header">
+  <div class="container">
+    <div class="appointment-grid">
+      <!-- Left Info Column -->
+      <div class="appointment-info-col">
+        <span class="badge-pill badge-teal header-kicker">Contact & Appointments</span>
+        <h2 class="appointment-title">Request an Appointment</h2>
+        <p class="appointment-lead">
+          Fill in the details below and we will automatically open WhatsApp with your booking details formatted and ready to send directly to Dr. Suraj Yewale's clinic.
+        </p>
+
+        <!-- Fast Contact Points -->
+        <div class="quick-contact-card">
+          <div class="q-item">
+            <app-icon name="map-pin" [size]="20" customClass="text-teal" />
+            <div>
+              <h4 class="q-title">Clinic Address</h4>
+              <p class="q-val">{{ contact().address.fullAddress }}</p>
+            </div>
+          </div>
+
+          <div class="q-item">
+            <app-icon name="phone" [size]="20" customClass="text-teal" />
+            <div>
+              <h4 class="q-title">Direct Phone Line</h4>
+              <a [href]="'tel:+' + contact().phone" class="q-link">{{ contact().phoneFormatted }}</a>
+            </div>
+          </div>
+
+          <div class="q-item">
+            <app-icon name="message-circle" [size]="20" customClass="text-emerald" />
+            <div>
+              <h4 class="q-title">WhatsApp Booking Line</h4>
+              <a [href]="clinicService.getWhatsAppUrl()" target="_blank" rel="noopener noreferrer" class="q-link">{{ contact().phoneFormatted }}</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="direct-map-link-wrap">
+          <a [href]="contact().googleMapsUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <app-icon name="navigation" [size]="18" />
+            <span>Open Google Maps Directions</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Form Column -->
+      <div class="appointment-form-col">
+        <div class="booking-card">
+          @if (!isSubmitted()) {
+            <div class="form-card-header">
+              <h3 class="form-heading">Fast WhatsApp Appointment</h3>
+              <p class="form-subheading">Instant slot reservation with Dr. Suraj Yewale</p>
+            </div>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="booking-form" novalidate>
+              <!-- Parent Name -->
+              <div class="form-group">
+                <label for="parentName" class="form-label">Parent / Guardian Name *</label>
+                <input 
+                  type="text" 
+                  id="parentName" 
+                  formControlName="parentName" 
+                  placeholder="e.g. Ramesh Patel" 
+                  class="form-input" 
+                />
+                @if (form.get('parentName')?.invalid && form.get('parentName')?.touched) {
+                  <span class="form-error">Please enter parent or guardian name.</span>
+                }
+              </div>
+
+              <!-- Child Age -->
+              <div class="form-group">
+                <label for="childAge" class="form-label">Child Age / Patient Details *</label>
+                <input 
+                  type="text" 
+                  id="childAge" 
+                  formControlName="childAge" 
+                  placeholder="e.g. 18 Months or 5 Years" 
+                  class="form-input" 
+                />
+                @if (form.get('childAge')?.invalid && form.get('childAge')?.touched) {
+                  <span class="form-error">Please specify child age or patient details.</span>
+                }
+              </div>
+
+              <!-- Phone Number -->
+              <div class="form-group">
+                <label for="phone" class="form-label">WhatsApp / Contact Phone *</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  formControlName="phone" 
+                  placeholder="e.g. 9175375189" 
+                  class="form-input" 
+                />
+                @if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+                  <span class="form-error">Please enter a valid 10-digit mobile number.</span>
+                }
+              </div>
+
+              <!-- Preferred Slot -->
+              <div class="form-group">
+                <label for="slot" class="form-label">Preferred Consultation Slot *</label>
+                <select id="slot" formControlName="slot" class="form-select">
+                  @for (s of timeSlots; track s) {
+                    <option [value]="s">{{ s }}</option>
+                  }
+                </select>
+              </div>
+
+              <!-- Additional Reason / Notes -->
+              <div class="form-group">
+                <label for="notes" class="form-label">Reason for Visit (Optional)</label>
+                <input 
+                  type="text" 
+                  id="notes" 
+                  formControlName="notes" 
+                  placeholder="e.g. Vaccination, Routine Checkup, Fever" 
+                  class="form-input" 
+                />
+              </div>
+
+              <!-- Submit CTA -->
+              <button 
+                type="submit" 
+                class="btn btn-whatsapp btn-lg w-full" 
+                [disabled]="isSubmitting()"
+              >
+                <app-icon name="message-circle" [size]="20" />
+                <span>{{ isSubmitting() ? 'Preparing Booking...' : 'Send Request on WhatsApp' }}</span>
+              </button>
+
+              <p class="form-footnote">
+                🔒 We respect your privacy. Clicking will format your details directly into a WhatsApp message.
+              </p>
+            </form>
+          } @else {
+            <!-- Success Confirmation Screen -->
+            <div class="booking-success-wrap">
+              <div class="success-icon-box">
+                <app-icon name="check" [size]="36" />
+              </div>
+              <h3 class="success-title">WhatsApp Booking Prepared!</h3>
+              <p class="success-msg">
+                Your appointment details have been opened in WhatsApp. Please press <strong>Send</strong> in WhatsApp to deliver the request to Dr. Suraj Yewale's clinic desk.
+              </p>
+              <div class="success-actions">
+                <button type="button" class="btn btn-outline" (click)="resetForm()">
+                  Book Another Appointment
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

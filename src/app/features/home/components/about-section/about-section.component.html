@@ -1,0 +1,28 @@
+<section id="about" class="section-py about-section scroll-mt-header">
+  <div class="container container-narrow">
+    <app-section-header 
+      badge="About Our Clinic" 
+      title="Care That Truly Puts Your Child First" 
+      subtitle="At Dr. Yewale's Mauli Children and General Clinic, every visit begins with listening carefully to parents and children. We combine deep clinical expertise with a gentle touch to ensure every young patient feels safe and cared for."
+    />
+
+    <div class="about-quote-box">
+      <p class="about-lead">
+        We believe medical care should be accurate, transparent, and comforting. From timely infant vaccinations and milestone tracking to acute illness treatment and whole-family general consultations, we are here as your trusted neighborhood healthcare partner in Panchavati, Nashik.
+      </p>
+    </div>
+
+    <!-- Core Clinical Pillars Grid -->
+    <div class="pillars-grid">
+      @for (pillar of pillars(); track pillar.title) {
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <app-icon [name]="pillar.icon" [size]="28" />
+          </div>
+          <h3 class="pillar-title">{{ pillar.title }}</h3>
+          <p class="pillar-desc">{{ pillar.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

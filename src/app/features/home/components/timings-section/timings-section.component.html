@@ -1,0 +1,54 @@
+<section id="timings" class="section-py timings-section scroll-mt-header">
+  <div class="container container-narrow">
+    <app-section-header 
+      badge="Visiting Hours" 
+      title="Consultation & OPD Schedule" 
+      subtitle="Plan your visit according to our regular morning and evening consultation sessions."
+    />
+
+    <!-- Live Status Banner -->
+    <div class="live-status-card" [class.is-open]="clinicStatus().isOpen">
+      <div class="live-status-left">
+        <span class="live-pulse-dot"></span>
+        <div class="live-text-wrap">
+          <span class="live-status-title">Clinic Status: {{ clinicStatus().statusText }}</span>
+          <span class="live-status-sub">{{ clinicStatus().slotInfo }}</span>
+        </div>
+      </div>
+      <a [href]="getWhatsAppLink()" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline check-slot-btn">
+        <span>Check Slot</span>
+      </a>
+    </div>
+
+    <!-- Timings Cards Grid -->
+    <div class="timings-grid">
+      @for (time of timings(); track time.days) {
+        <div class="timing-card" [class.sunday-card]="time.isSunday">
+          <div class="timing-card-header">
+            <app-icon name="calendar" [size]="22" [customClass]="time.isSunday ? 'icon-amber' : 'icon-teal'" />
+            <h3 class="timing-day-title">{{ time.days }}</h3>
+          </div>
+
+          <div class="timing-slots-list">
+            <div class="slot-pill morning-pill">
+              <span class="slot-label">Morning OPD:</span>
+              <span class="slot-time">{{ time.morningSlot }}</span>
+            </div>
+
+            <div class="slot-pill" [class.evening-pill]="!time.isSunday" [class.closed-pill]="time.isSunday">
+              <span class="slot-label">Evening OPD:</span>
+              <span class="slot-time">{{ time.eveningSlot }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="timings-notice-card">
+      <app-icon name="info" [size]="20" customClass="info-icon" />
+      <p class="notice-text">
+        <strong>Emergency & Urgent Pediatric Inquiries:</strong> Patients experiencing sudden high fever, acute distress, or vaccination appointments can contact or WhatsApp anytime at <strong>+91 91753 75189</strong>.
+      </p>
+    </div>
+  </div>
+</section>

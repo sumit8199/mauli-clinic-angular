@@ -1,0 +1,174 @@
+.timings-section {
+  background-color: var(--color-bg);
+}
+
+.live-status-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+
+  &.is-open {
+    border-color: rgba(16, 185, 129, 0.4);
+    background-color: rgba(236, 253, 245, 0.6);
+
+    .live-pulse-dot {
+      background-color: var(--color-success);
+      box-shadow: 0 0 10px var(--color-success);
+    }
+
+    .live-status-title {
+      color: #065f46;
+    }
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.live-status-left {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.live-pulse-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-error);
+  flex-shrink: 0;
+}
+
+.live-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.live-status-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-deep);
+}
+
+.live-status-sub {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.timings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timing-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: rgba(31, 122, 140, 0.3);
+  }
+}
+
+.timing-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.icon-teal {
+  color: var(--color-primary);
+}
+
+.icon-amber {
+  color: var(--color-accent);
+}
+
+.timing-day-title {
+  font-size: 1.25rem;
+  color: var(--color-deep);
+}
+
+.timing-slots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.slot-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  &.morning-pill {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+  }
+
+  &.evening-pill {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  &.closed-pill {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-muted);
+  }
+}
+
+.slot-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.timings-notice-card {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--color-secondary);
+  border: 1px solid rgba(31, 122, 140, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+
+  .info-icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .notice-text {
+    font-size: 0.875rem;
+    color: var(--color-secondary-foreground);
+    line-height: 1.55;
+
+    strong {
+      color: var(--color-deep);
+    }
+  }
+}
